@@ -27,3 +27,4 @@
   - if z = x then the result is y
 
 **Time complexity:** for build LCA sparse table *O(NlogN)*, for each query *O(logN)*. Total complexity *O(NlogN) + O(QLogN)*
+### [Sample Code (C++)](https://github.com/MH-Sajjat/Editorials/blob/main/Data%20Structures%20-%203/N-LCA.cpp) ###
