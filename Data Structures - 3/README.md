@@ -20,7 +20,7 @@
 - *lca(u, v)* is a function that returns the lowest common ancestor of node u and v.
 - By making node 1 as the root, create a tree.
 - in each query, you are given 3 values r, u, v where r = root, u and v are others two nodes.
-- here *x = lca(r, u), y = lca(r, v), z = lca(u, v).*
+- Let *x = lca(r, u), y = lca(r, v), z = lca(u, v).*
 - from the graph, we get three observations
   - if x = y then the result is z
   - if y = z then the result is x
