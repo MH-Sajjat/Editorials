@@ -9,4 +9,4 @@
 
 **Time Complexity:** for build sparse table *O(NlogN)*, for query *O(1).*
 
-### [Solution code]() ###
+### [Sample Code (C++)](https://github.com/MH-Sajjat/Editorials/blob/main/Data%20Structures%20-%203/F-RMQ.cpp) ###
