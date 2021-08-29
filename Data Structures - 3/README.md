@@ -17,7 +17,7 @@
 > Editorial by Sajjat
 
 **Solution**
-- *lca(u, v)* is a function that returns the lowest common ancestor of node u and v.
+- Let *lca(u, v)* is a function that return the lowest common ancestor of node u and v.
 - By making node 1 as the root, create a tree.
 - in each query, you are given 3 values r, u, v where r = root, u and v are others two nodes.
 - Let *x = lca(r, u), y = lca(r, v), z = lca(u, v).*
