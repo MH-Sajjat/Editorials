@@ -33,6 +33,7 @@
 - For each query *O(logN)
 - Total : *O(NlogN) + O(QlogN)*
 
+### [Sample Code (C++)](https://github.com/MH-Sajjat/Editorials/blob/main/Data%20Structures%20-%203/N-LCA.cpp) ###
 <br>
 
 ## [N-LCA](https://vjudge.net/contest/455722#problem/N) ##
