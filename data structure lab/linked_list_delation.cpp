@@ -11,6 +11,7 @@ struct Node {
         next = NULL;
     }
 } *root = NULL;
+int sz = 0;
 
 void add(int val) {
     if (root == NULL) {
@@ -23,63 +24,59 @@ void add(int val) {
         Node* xNode = new Node(val);
         cur->next = xNode;
     }
+    sz++;
 }
 
-void delBegin() {
-    Node* temp = root;
-    root = root->next;
-    delete(temp);
-}
-
-void delEnd() {
-    if (root->next == NULL) {
+void delAtPosition(int pos) {
+    if (sz == 0) {
+        cout << "List is empty" << endl;
+    } else if (pos > sz or pos < 1) {
+        cout << "Index does not exist" << endl;
+    } else if (pos == 1) {
         Node* temp = root;
-        root = NULL;
+        root = root->next;
+        delete(temp);
+    } else if (sz == 1) {
+        Node* temp = root;
+        root = root->next;
         delete(temp);
     } else {
         Node* cur = root;
-        Node* pre;
-        while (cur->next != NULL) {
+        Node* pre = NULL;
+        while (pos > 1) {
             pre = cur;
             cur = cur->next;
+            pos--;
         }
-        pre->next = NULL;
+        pre->next = cur->next;
         delete(cur);
     }
 }
 
-void delatPos(int pos) {
-    if (pos == 1) {
-        Node* temp = root;
-        root = root->next;
-        delete(temp);
-    }
-    Node* cur = root;
-    while (pos > 2) {
-        cur = cur->next;
-        pos--;
-    }
-    Node* temp = cur->next;
-    cur->next = cur->next->next;
-    delete(temp);
-}
-
 void printList() {
+    cout << "Final list elements:";
     Node* cur = root;
     while (cur != NULL) {
-        printf("%d ", cur->val);
+        printf(" %d", cur->val);
         cur = cur->next;
     }
     printf("\n");
 }
 
 int main() {
-    add(1);
-    add(2);
-    add(3);
-    add(4);
-    add(5);
-    delatPos(5);
+    cout << "Enter number of element: ";
+    int n;
+    cin >> n;
+    cout << "Enter list element: ";
+    for (int i = 1; i <= n; ++i) {
+        int x;
+        cin >> x;
+        add(x);
+    }
+    int pos;
+    cout << "Enter deletion position: ";
+    cin >> pos;
+    delAtPosition(pos);
     printList();
     return 0;
 }
