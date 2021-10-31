@@ -36,12 +36,19 @@ bool search(int val) {
 }
 
 int main() {
-    add(1);
-    add(2);
-    add(3);
-    add(4);
-    add(5);
-    if (search(20)) cout << "Found" << endl;
+    int n;
+    cout << "Enter number of element: ";
+    cin >> n;
+    cout << "Enter list elements: ";
+    for (int i = 1; i <= n; ++i) {
+        int x;
+        cin >> x;
+        add(x);
+    }
+    int val;
+    cout << "Enter search value: ";
+    cin >> val;
+    if (search(val)) cout << "Found" << endl;
     else cout << "Not Found" << endl;
     return 0;
 }
