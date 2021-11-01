@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void selectionSort(int nums[], int n) {
+template <typename type> void selectionSort(type nums[], int n) {
     for (int i = 0; i < (n - 1); ++i) {
         int idx = i;
         for (int j = i + 1; j < n; ++j) {
