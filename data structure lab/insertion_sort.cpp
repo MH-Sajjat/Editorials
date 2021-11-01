@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void insertionSort(int nums[], int n) {
+template <typename type> void insertionSort(type nums[], int n) {
     for (int i = 1; i < n; ++i) {
-        int key = nums[i];
+        type key = nums[i];
         int j = i - 1;
         while (j >= 0 and nums[j] > key) {
             nums[j + 1] = nums[j];
