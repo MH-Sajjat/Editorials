@@ -2,37 +2,51 @@
 using namespace std;
 
 const int N = (int) 2e5 + 5;
-vector<pair<int, int>> g[N];
+vector<int> g[N];
 vector<bool> vis(N, 0);
 
-int mstPrims(int src) {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-    pq.push({0, src});
-    int cost = 0;
-    while (!pq.empty()) {
-        int u = pq.top().second, w = pq.top().first;
-        pq.pop();
-        if (vis[u]) continue;
-        cost += w;
-        vis[u] = 1;
-        for (auto x : g[u]) {
-            int v = x.second, wt = x.first;
-            if (!vis[v]) pq.push({wt, v});
+map<pair<int, int>, bool> m;
+
+bool isNotCycle(int u, int par = -1) {
+    vis[u] = true;
+    for (auto& v : g[u]) {
+        if (v == par or v == -1) continue;
+        else if (vis[v]) {
+            m[{u, v}] = 0;
+            v = -1;
+            return false;
+        } else {
+            if (!isNotCycle(v, u)) return false;
         }
     }
-    return cost;
+    return true;
 }
+
 
 int main() {
     // freopen("input.txt", "r", stdin);
     int numNode, numEdge;
     cin >> numNode >> numEdge;
+    vector<pair<int, int>> edge;
     for (int i = 1; i <= numEdge; ++i) {
-        int u, v, w;
-        cin >> u >> v >> w;
-        g[u].push_back({w, v});
-        g[v].push_back({w, u});
+        int u, v;
+        cin >> u >> v;
+        m[{u, v}] = 1;
+        edge.push_back({u, v});
+        g[u].push_back(v);
+        g[v].push_back(u);
     }
-    cout << "Cost: " << mstPrims(1) << endl;
+
+    while (1) {
+        if (isNotCycle(1)) break;
+        vis.assign(N, 0);
+    }
+
+    cout << "Spanning Tree Edges: " << endl;
+    
+    for (auto x : edge) {
+        if (m[x] == true) cout << x.first << " <-> " << x.second << endl;
+    }
+
     return 0;
 }
