@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<pair<int, pair<int, int>>> edge;
+vector<pair<int, int>> edge, spanEdge;
 vector<int> par, rnk;
 
 void precal(int n) {
@@ -26,14 +26,13 @@ bool merge(int a, int b) {
     return 1;
 }
 
-int mstKruskal(int n) {
-    sort(edge.begin(), edge.end());
-    int cost = 0;
+void spanningTree() {
     for (auto x : edge) {
-        int w = x.first, u = x.second.first, v = x.second.second;
-        if (merge(u, v)) cost += w;
+        int u = x.first, v = x.second;
+        if (merge(u, v)) {
+            spanEdge.push_back({u, v});
+        }
     }
-    return cost;
 }
 
 int main() {
@@ -42,10 +41,12 @@ int main() {
     cin >> numNode >> numEdge;
     precal(numNode);
     for (int i = 1; i <= numEdge; ++i) {
-        int u, v, w;
-        cin >> u >> v >> w;
-        edge.push_back({w, {u, v}});
+        int u, v;
+        cin >> u >> v;
+        edge.push_back({u, v});
     }
-    cout << "Cost: " << mstKruskal(numEdge) << endl;
+    spanningTree();
+    cout << "Spanning Tree Edges: " << endl;
+    for (auto x : spanEdge) cout << x.first << " <-> " << x.second << endl;
     return 0;
 }
