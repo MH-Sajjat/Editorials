@@ -22,15 +22,6 @@ bool valid(ll n, ll m) {
     return 1;
 }
 
-int len(int n) {
-    int cnt = 0;
-    while (n) {
-        cnt++;
-        n /= 10;
-    }
-    return cnt;
-}
-
 int main() {
     // freopen("input.txt", "r", stdin);
     ll num;
